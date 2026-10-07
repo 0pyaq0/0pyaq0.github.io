@@ -5,6 +5,7 @@ import useOffsetTop from "hooks/useOffsetTop"
 
 import Toc from "./Toc"
 import StyledMarkdown from "./StyledMarkdown"
+import PrismTheme from "./PrismTheme"
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Body = ({ html }) => {
+const Body = ({ html, hideToc }) => {
   const [toc, setToc] = useState([])
 
   const [ref, offsetTop] = useOffsetTop()
@@ -30,7 +31,9 @@ const Body = ({ html }) => {
 
   return (
     <Wrapper>
-      <Toc items={toc} articleOffset={offsetTop} />
+      {hideToc || <Toc items={toc} articleOffset={offsetTop} />}
+
+      <PrismTheme />
 
       <StyledMarkdown
         id="article-body"

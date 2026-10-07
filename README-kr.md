@@ -1,5 +1,7 @@
 # gatsby-starter-hoodie
 
+> gatsby-starter-hoodie가 2023-06-30 부터 Gatsby 5로 마이그레이션 되었습니다. 이제 node.js 20 버전에서도 gatsby-starter-hoodie를 사용하실 수 있습니다.
+
 ## 🚀 gatsby-starter-hoodie 에 대하여
 
 gatsby-starter-hoodie 는 기술 블로그를 작성하기 위해 개발된 Gatsby 테마입니다. 마크다운과 많은 프로그래밍 언어의 코드 하이라이팅, 그리고 Katex 문법을 지원합니다. 또한 태그와 시리즈를 통하여 쉽게 게시물을 분류할 수 있습니다.
@@ -8,7 +10,7 @@ gatsby-starter-hoodie 는 기술 블로그를 작성하기 위해 개발된 Gats
 
 이 프로젝트는 [벨로그](https://velog.io)에서 영감을 얻었습니다.
 
-## [라이브 데모](https://devHudi.github.io/gatsby-starter-hoodie)
+## [라이브 데모](https://gatsby-starter-hoodie.netlify.app)
 
 ## 주요 기능
 
@@ -20,7 +22,7 @@ gatsby-starter-hoodie 는 기술 블로그를 작성하기 위해 개발된 Gats
 - 시리즈 분류
 - 반응형 웹
 - SEO
-- Utterance (댓글 위젯)
+- Giscus
 
 아래 단계를 따라서 여러분의 블로그를 시작하세요. 굉장히 쉬워요 😉.
 
@@ -43,7 +45,7 @@ $ npm run start
 
 ## 3. Github 레포지토리 생성
 
-Utterance 댓글 위젯은 **Github 이슈 시스템** 기반입니다. 따라서 각 블로그 별 Github 레포지토리가 필요합니다. 또한 여러분이 Github Pages 혹은 Netlify 로 블로그를 배포하길 원한다면, Github 레포지토리는 필수입니다.
+Giscus 댓글 위젯은 **Github Discuss 시스템** 기반입니다. 따라서 각 블로그 별 Github 레포지토리가 필요합니다. 또한 여러분이 Github Pages 혹은 Netlify 로 블로그를 배포하길 원한다면, Github 레포지토리는 필수입니다.
 
 만약 Github 레포지토리를 생성하는 법을 모른다면, [Github 공식 문서](https://docs.github.com/en/github/getting-started-with-github/create-a-repo) 를 참조하세요.
 
@@ -67,18 +69,25 @@ module.exports = {
     instagram: "https://www.instagram.com",
     etc: "https://www.google.com/",
   },
-  utterances: {
+  giscus: {
     repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
-    type: "pathname",
+    repoId: "{YOUR_GITHUB_REPOSITORY_ID}",
+    category: "{YOUR_GITHUB_REPOSITORY_CATEGORY}",
+    categoryId: "{YOUR_GITHUB_REPOSITORY_CATEGORY_ID}",
+    mapping: "pathname",
+    strict: "0",
+    reactionsEnabled: "1",
+    inputPosition: "bottom",
+    lang: "en",
   },
 }
 ```
 
-gatsby-starter-hoodie 는 `blog-config.js` 라는 설정 파일을 제공합니다. 이 파일에서 블로그 정보, 작성자 프로필, Utterance 설정 등을 작성할 수 있습니다. 여러분 블로그 설정에 맞게 `blog-config.js` 를 설정하세요. 하지만, `utterances.type` 속성은 수정하지 않는 것을 권장합니다.
+gatsby-starter-hoodie 는 `blog-config.js` 라는 설정 파일을 제공합니다. 이 파일에서 블로그 정보, 작성자 프로필, Giscus 설정 등을 작성할 수 있습니다. 여러분 블로그 설정에 맞게 `blog-config.js` 를 설정하세요.
 
 ## 5. 포스트 추가
 
-마크다운 포스트는 `contents/posts` 경로에 위치해있습니다. 해당 경로에서 글을 작성할 수 있습니다. [여기를 클릭하여](https://devHudi.github.io/gatsby-starter-hoodie/writing-guide) 더 자세한 글 작성 방법을 확인하세요.
+마크다운 포스트는 `contents/posts` 경로에 위치해있습니다. 해당 경로에서 글을 작성할 수 있습니다. [여기를 클릭하여](https://hoodie.gatsbyjs.io/gatsby-starter-hoodie/writing-guide) 더 자세한 글 작성 방법을 확인하세요.
 
 ## 6. 블로그 배포하기
 
@@ -146,3 +155,7 @@ $ npm run build
     ├── templates // post components are here
     └── utils
 ```
+
+## Star History 🌟
+
+[![Star History Chart](https://api.star-history.com/svg?repos=devHudi/gatsby-starter-hoodie&type=Date)](https://star-history.com/#devHudi/gatsby-starter-hoodie&Date)
