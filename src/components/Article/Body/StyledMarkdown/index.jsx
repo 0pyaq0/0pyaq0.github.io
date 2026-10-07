@@ -107,44 +107,60 @@ const StyledMarkdown = styled.div`
   }
 
   & table {
-    border-collapse: collapse;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid ${props => props.theme.colors.tableBorder};
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    & table {
+      display: block;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+  }
+
+  & th,
+  & td {
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   & th {
-    border-bottom: 2px solid ${props => props.theme.colors.border};
+    background-color: ${props => props.theme.colors.tableHeaderBackground};
+    border-bottom: 1px solid ${props => props.theme.colors.tableBorder};
     font-weight: 700;
+    white-space: nowrap;
   }
 
   & td {
-    border-top: 1px solid ${props => props.theme.colors.border};
-    border-bottom: 1px solid ${props => props.theme.colors.border};
-  }
-
-  & td,
-  th {
-    padding: 8px;
+    border-top: 1px solid ${props => props.theme.colors.tableBorder};
   }
 
   & tr:first-child td {
     border-top: none;
   }
 
-  & tr:nth-child(even) {
-    background-color: ${props => props.theme.colors.tableBackground};
-  }
-
-  & tr:last-child td {
-    border-bottom: none;
-  }
-
   & *:not(pre) > code.language-text,
   & table code.language-text {
     position: relative;
     top: -1px;
-    padding: 3px 5px 3px 5px;
+    padding: 2px 6px;
     font-size: 13px;
     background-color: ${props => props.theme.colors.inlineCodeBackground};
-    font-weight: bold;
+    border: 1px solid ${props => props.theme.colors.inlineCodeBorder};
+    border-radius: 6px;
+    font-weight: 500;
     color: ${props => props.theme.colors.text};
   }
 
@@ -152,10 +168,6 @@ const StyledMarkdown = styled.div`
   & h3 > code.language-text,
   & h4 > code.language-text {
     font-size: inherit;
-  }
-
-  & tr:nth-child(even) code.language-text {
-    background-color: ${props => props.theme.colors.inlineCodeBackgroundDarker};
   }
 
   & > p + ul,

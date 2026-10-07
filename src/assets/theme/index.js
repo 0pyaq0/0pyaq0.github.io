@@ -44,6 +44,9 @@ export const light = {
     textFieldBorder: GRAY4,
     textFieldActivatedBorder: GRAY5,
     tableBackground: GRAY1,
+    tableBorder: GRAY2,
+    tableHeaderBackground: GRAY0,
+    inlineCodeBorder: GRAY3,
   },
 }
 
@@ -82,5 +85,8 @@ export const dark = {
     textFieldBorder: GRAY7,
     textFieldActivatedBorder: GRAY6,
     tableBackground: "#292e33",
+    tableBorder: GRAY7,
+    tableHeaderBackground: "#24282c",
+    inlineCodeBorder: GRAY7,
   },
 }
