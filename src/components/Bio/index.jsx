@@ -19,7 +19,7 @@ import {
   FaLink,
 } from "react-icons/fa6"
 
-import { siteUrl, description, author, links } from "../../../blog-config"
+import { description, author, links } from "../../../blog-config"
 
 const BioWrapper = styled.div`
   display: flex;
@@ -30,18 +30,13 @@ const BioWrapper = styled.div`
   }
 `
 
-const profileImageRoot =
-  typeof window !== "undefined" && window.location.host === "localhost:8000"
-    ? "http://localhost:8000"
-    : siteUrl
-
 const Profile = styled.div`
   flex: 0 0 auto;
   margin-right: 16px;
   width: 128px;
   height: 128px;
   border-radius: 999px;
-  background-image: url(${profileImageRoot}/profile.png);
+  background-image: url(/profile.png);
   background-size: cover;
   background-position: center;
 `
@@ -110,7 +105,7 @@ const Bio = () => {
     <BioWrapper id="bio">
       <Profile />
       <div>
-        <Author>@{author}</Author>
+        <Author>{author}</Author>
         <Description>{description}</Description>
         <LinksWrapper>
           <Link link={github}>
