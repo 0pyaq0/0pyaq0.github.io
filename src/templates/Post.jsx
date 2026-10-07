@@ -41,7 +41,7 @@ const Post = ({ data }) => {
           date={date}
           update={update}
           tags={tags}
-          minToRead={Math.round(readingTime.minutes)}
+          minToRead={Math.max(1, Math.ceil(readingTime.minutes))}
         />
         {filteredSeries.length > 0 && (
           <Article.Series header={series} series={filteredSeries} />

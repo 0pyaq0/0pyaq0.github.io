@@ -1,13 +1,11 @@
 module.exports = {
-  title: "🐬 dlog",
+  title: "Blog",
   description: "Back-end Developer 🐬",
-  author: "IJ",
+  author: "LeeJin Sim",
   siteUrl: "https://0pyaq0.github.io/",
   links: {
     github: "https://github.com/0pyaq0",
-    linkedIn:
-      "https://www.linkedin.com/in/%EC%9D%B4%EC%A7%84-%EC%8B%AC-aa7a3422a",
-    instagram: "https://www.instagram.com/o.5x3o/",
+    linkedIn: "https://www.linkedin.com/in/0pyaq0/",
     email: "mailto:0devbenny@gmail.com",
   },
   useAbout: true,

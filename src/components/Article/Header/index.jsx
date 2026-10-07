@@ -50,8 +50,8 @@ const Header = ({ title, date, tags, minToRead }) => {
       <ArticleTitle> {title} </ArticleTitle>
       <Information>
         <Author>
-          <Link to="/about">@{author}</Link>
-        </Author>
+          <Link to="/about">{author}</Link>
+        </Author>{" "}
         <Date>· {date} </Date>
         <Date>· {minToRead} min read </Date>
       </Information>
