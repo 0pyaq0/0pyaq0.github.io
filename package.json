@@ -1,10 +1,10 @@
 {
-  "name": "gatsby-starter-hoodie",
-  "private": false,
-  "description": "gatsby-starter-hoodie is a gatsby theme developed for developers to write tech blogs.",
-  "homepage": "https://devhudi.github.io/gatsby-starter-hoodie/",
+  "name": "dlog",
+  "private": true,
+  "description": "IJ's tech blog",
+  "homepage": "https://0pyaq0.github.io/",
   "version": "0.2.0",
-  "author": "Hudi",
+  "author": "IJ",
   "dependencies": {
     "@giscus/react": "^3.0.0",
     "babel-eslint": "^10.1.0",
@@ -81,9 +81,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devHudi/gatsby-starter-hoodie"
-  },
-  "bugs": {
-    "url": "https://github.com/devHudi/gatsby-starter-hoodie"
+    "url": "https://github.com/0pyaq0/0pyaq0.github.io"
   }
 }
