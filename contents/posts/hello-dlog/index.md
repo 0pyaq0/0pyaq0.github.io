@@ -1,7 +1,7 @@
 ---
 title: "블로그를 다시 시작합니다"
 description: "dlog 재오픈 안내"
-date: 2026-10-07
+date: 2026-10-07T09:00:00+09:00
 update: 2026-10-07
 tags:
   - blog
