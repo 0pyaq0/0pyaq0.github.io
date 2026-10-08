@@ -1,8 +1,8 @@
 ---
 title: "Aurora PostgreSQL에서 Iceberg·Parquet 직접 조회: 데이터 레이크를 위한 ETL이 하나 줄어든다"
 description: "Aurora PostgreSQL 17.11, 18.6부터 aurora_analytics 확장으로 S3의 Iceberg·Parquet 데이터를 외부 테이블로 바로 조회하게 됐다. 설정 방법과 쿼리 예시, 운영할 때 볼 부분을 공식 발표 기준으로 정리했다."
-date: 2026-10-08T08:55:00+09:00
-update: 2026-10-08T08:55:00+09:00
+date: 2026-10-08T08:55:00
+update: 2026-10-08T08:55:00
 tags:
   - AWS
   - Database
