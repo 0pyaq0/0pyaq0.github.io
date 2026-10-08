@@ -2,7 +2,6 @@ const blogConfig = require("./blog-config")
 const { title, description, author, siteUrl } = blogConfig
 
 module.exports = {
-  pathPrefix: "/gatsby-starter-hoodie",
   siteMetadata: {
     title,
     description,
@@ -163,9 +162,12 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
+                // Post dates are written in KST without an offset.
+                const kstDate = `${edge.node.frontmatter.date}+09:00`
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
+                  description:
+                    edge.node.frontmatter.description || edge.node.excerpt,
+                  date: kstDate,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": edge.node.html }],
@@ -185,7 +187,8 @@ module.exports = {
                       fields { slug }
                       frontmatter {
                         title
-                        date
+                        description
+                        date(formatString: "YYYY-MM-DDTHH:mm:ss")
                       }
                     }
                   }
@@ -194,7 +197,6 @@ module.exports = {
             `,
             output: `/rss.xml`,
             title: `RSS Feed of ${title}`,
-            match: "^/blog/",
           },
         ],
       },

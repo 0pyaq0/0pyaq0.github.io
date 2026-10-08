@@ -62,7 +62,7 @@ const Series = ({ pageContext, data }) => {
       <SEO
         title={`SERIES: ${seriesName}`}
         description={description}
-        url={siteUrl}
+        url={`${siteUrl}/series/${seriesName.replace(/\s/g, "-")}`}
       />
 
       <Header>
