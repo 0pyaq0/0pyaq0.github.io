@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const postTemplate = require.resolve(`./src/templates/Post.jsx`)
   const seriesTemplate = require.resolve(`./src/templates/Series.jsx`)
+  const blogListTemplate = require.resolve(`./src/templates/BlogList.jsx`)
 
   const result = await graphql(`
     {
@@ -69,6 +70,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+  // 홈 글 목록: 10개씩 끊어서 /, /page/2/, /page/3/ ... 으로 만든다
+  const postsPerPage = 10
+  const numPages = Math.max(1, Math.ceil(posts.length / postsPerPage))
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/` : `/page/${i + 1}/`,
+      component: blogListTemplate,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
   if (series.length > 0) {
     series.forEach(singleSeries => {

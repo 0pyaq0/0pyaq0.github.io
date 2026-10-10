@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import _ from "lodash"
 
 import { Link } from "gatsby"
 
 import Title from "components/Title"
 import Divider from "components/Divider"
 import TagList from "components/TagList"
+import Pagination from "components/Pagination"
 
 const PostListWrapper = styled.div`
   @media (max-width: 768px) {
@@ -38,38 +38,34 @@ const Excerpt = styled.p`
   word-break: break-all;
 `
 
-const checkIsScrollAtBottom = () => {
-  return (
-    document.documentElement.scrollHeight -
-      document.documentElement.scrollTop <=
-    document.documentElement.clientHeight + 100
-  )
-}
+export const POSTS_PER_PAGE = 10
 
-const PostList = ({ postList }) => {
-  const [postCount, setPostCount] = useState(10)
-
-  const handleMoreLoad = _.throttle(() => {
-    if (checkIsScrollAtBottom() && postCount < postList.length) {
-      setTimeout(() => setPostCount(postCount + 10), 300)
-    }
-  }, 250)
+// currentPage/numPages가 주어지면 이미 잘린 목록으로 보고 페이지 링크를 쓰고,
+// 아니면(태그·검색·시리즈) 받은 목록을 10개씩 나눠 화면 안에서 넘긴다.
+const PostList = ({ postList, currentPage, numPages, getPagePath }) => {
+  const isPaged = numPages !== undefined
+  const [localPage, setLocalPage] = useState(1)
 
   useEffect(() => {
-    window.addEventListener("scroll", handleMoreLoad)
-
-    return () => {
-      window.removeEventListener("scroll", handleMoreLoad)
-    }
-  }, [postCount, postList])
-
-  useEffect(() => {
-    setPostCount(10)
+    setLocalPage(1)
   }, [postList])
+
+  const page = isPaged ? currentPage : localPage
+  const totalPages = isPaged
+    ? numPages
+    : Math.ceil(postList.length / POSTS_PER_PAGE)
+  const visiblePosts = isPaged
+    ? postList
+    : postList.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE)
+
+  const handlePageChange = nextPage => {
+    setLocalPage(nextPage)
+    window.scrollTo({ top: 0 })
+  }
 
   return (
     <PostListWrapper>
-      {postList.slice(0, postCount).map((post, i) => {
+      {visiblePosts.map((post, i) => {
         const { title, date, tags } = post.frontmatter
         const { excerpt } = post
         const { slug } = post.fields
@@ -85,12 +81,19 @@ const PostList = ({ postList }) => {
               <TagList tagList={tags} />
             </PostWrapper>
 
-            {postCount - 1 !== i && postList.length - 1 !== i && (
+            {visiblePosts.length - 1 !== i && (
               <Divider mt="48px" mb="32px" />
             )}
           </React.Fragment>
         )
       })}
+
+      <Pagination
+        currentPage={page}
+        numPages={totalPages}
+        getPagePath={isPaged ? getPagePath : undefined}
+        onPageChange={handlePageChange}
+      />
     </PostListWrapper>
   )
 }
