@@ -81,9 +81,7 @@ const PostList = ({ postList, currentPage, numPages, getPagePath }) => {
               <TagList tagList={tags} />
             </PostWrapper>
 
-            {visiblePosts.length - 1 !== i && (
-              <Divider mt="48px" mb="32px" />
-            )}
+            {visiblePosts.length - 1 !== i && <Divider mt="48px" mb="32px" />}
           </React.Fragment>
         )
       })}
