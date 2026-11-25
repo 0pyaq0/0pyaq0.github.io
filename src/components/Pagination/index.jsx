@@ -39,20 +39,16 @@ const PageButton = styled.button`
   ${itemStyle}
 `
 
+// 화살표를 숫자와 같은 텍스트 줄에 두고, 기준선부터 숫자 높이만큼만 그려서
+// 어떤 폰트에서도 숫자와 같은 높이에 오도록 한다.
 const arrowStyle = css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  padding: 4px 8px;
-  background: none;
-  border: none;
-  color: ${props => props.theme.colors.tertiaryText};
-  cursor: pointer;
-  transition: color 0.2s;
+  ${itemStyle}
 
-  &:hover {
-    color: ${props => props.theme.colors.text};
+  svg {
+    display: inline-block;
+    width: 0.45em;
+    height: 0.72em;
+    vertical-align: baseline;
   }
 `
 
@@ -66,8 +62,6 @@ const ArrowButton = styled.button`
 
 const Chevron = ({ direction }) => (
   <svg
-    width="10"
-    height="16"
     viewBox="0 0 10 16"
     fill="none"
     stroke="currentColor"
@@ -77,9 +71,9 @@ const Chevron = ({ direction }) => (
     aria-hidden="true"
   >
     {direction === "next" ? (
-      <polyline points="2,2 8,8 2,14" />
+      <polyline points="2,1 8,8 2,15" />
     ) : (
-      <polyline points="8,2 2,8 8,14" />
+      <polyline points="8,1 2,8 8,15" />
     )}
   </svg>
 )
