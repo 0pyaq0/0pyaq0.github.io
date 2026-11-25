@@ -89,8 +89,7 @@ const GROUP_SIZE = 5
 const Pagination = ({ currentPage, numPages, getPagePath, onPageChange }) => {
   if (numPages <= 1) return null
 
-  const groupStart =
-    Math.floor((currentPage - 1) / GROUP_SIZE) * GROUP_SIZE + 1
+  const groupStart = Math.floor((currentPage - 1) / GROUP_SIZE) * GROUP_SIZE + 1
   const groupEnd = Math.min(groupStart + GROUP_SIZE - 1, numPages)
   const prevPage = groupStart > 1 ? groupStart - 1 : null
   const nextPage = groupEnd < numPages ? groupEnd + 1 : null
